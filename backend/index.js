@@ -22,18 +22,18 @@ app.get('/tasks', async (req, res) => {
     res.json(tasks)
 });
 
-app.post('/tasks', async (reg, res) => {
-    const task = await Task.create(reg.body);
+app.post('/tasks', async (req, res) => {
+    const task = await Task.create(req.body);
     res.json(task)
 });
 
-app.put('/tasks/:id', async (reg, res) => {
+app.put('/tasks/:id', async (req, res) => {
     const task = await Task.findByIdAndUpdate(req.params.id,req.body);
     res.json(task);
 }); 
 
-app.delete('/tasks/id', async (reg, res) => {
-    await Task.findByIdAndDeletete(reg.params.id);
+app.delete('/tasks/id', async (req, res) => {
+    await Task.findByIdAndDeletete(req.params.id);
     res.sendStatus(204);
 });
 
